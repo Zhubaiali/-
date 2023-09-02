@@ -28,7 +28,7 @@ public class Singleton {
 ThreadLocal：懒加载，线程安全，但是只能在同一个线程中共享
 CAS：懒加载，线程安全，但是会有ABA问题
 
-# 饥饿
+### 饥饿
 ```java
 public class Singleton {
     private static Singleton instance = new Singleton();
@@ -42,7 +42,7 @@ public class Singleton {
 }
 ```
 
-# 双重检查锁
+### 双重检查锁
 ```java
 public class Singleton {
     private static volatile Singleton instance;
@@ -63,7 +63,7 @@ public class Singleton {
 }
 ```
 
-# 静态内部类
+### 静态内部类
 ```java
 public class Singleton {
     private Singleton() {
@@ -79,7 +79,7 @@ public class Singleton {
 }
 ```
 
-# 枚举
+### 枚举
 ```java
 public enum Singleton {
     INSTANCE;
@@ -90,7 +90,7 @@ public enum Singleton {
 }
 ```
 
-# 容器
+### 容器
 ```java
 public class Singleton {
     private static Map<String, Object> singletonMap = new ConcurrentHashMap<>();
@@ -113,7 +113,7 @@ public class Singleton {
 }
 ```
 
-# ThreadLocal
+### ThreadLocal
 ```java
 public class Singleton {
     private static final ThreadLocal<Singleton> threadLocal = new ThreadLocal<>();
@@ -130,7 +130,7 @@ public class Singleton {
 }
 ```
 
-# CAS
+### CAS
 ```java
 public class Singleton {
     private static final AtomicReference<Singleton> INSTANCE = new AtomicReference<>();
