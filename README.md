@@ -69,6 +69,8 @@ public class Singleton {
 
 内层 if (instance == null)
 这个检查是在同步块内部进行的，并且是为了确保只有一个实例被创建。
+
+内层的检查确保即使有多个线程同时尝试创建实例，实际上只会创建一个。
 ### 双重检查锁
 ```java
 public class Singleton {
