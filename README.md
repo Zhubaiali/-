@@ -48,7 +48,7 @@ public class Singleton{
         return instance;
     }
 }
-
+```
 ### 饥饿
 ```java
 public class Singleton {
