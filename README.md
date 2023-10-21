@@ -21,11 +21,17 @@ public class Singleton {
 
 ## 单例模式的7中写法
 饥饿模式：类加载时就初始化，线程安全，但是会浪费内存
+
 双重检查锁：懒加载，线程安全，但是会有指令重排的问题
+
 静态内部类：懒加载，线程安全，但是会有指令重排的问题
+
 枚举：懒加载，线程安全，但是不够灵活
+
 容器：懒加载，线程不安全，但是可以用ConcurrentHashMap解决
+
 ThreadLocal：懒加载，线程安全，但是只能在同一个线程中共享
+
 CAS：懒加载，线程安全，但是会有ABA问题
 
 ### 饥饿
@@ -41,6 +47,22 @@ public class Singleton {
     }
 }
 ```
+
+### synchronized 
+```java
+public class Singleton {
+    private static Singleton instance;
+    private Singleton() {}
+    public static synchronized Singleton getInstance() {
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
+```
+缺点：性能开销较大。每次调用getInstance()都需要进行同步，即使实例已经创建。所以有下面的双重检查锁写法
+
 
 ### 双重检查锁
 ```java
