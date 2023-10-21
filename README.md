@@ -20,6 +20,8 @@ public class Singleton {
 在这个例子中，Singleton 类的构造函数被设为私有，这意味着外部代码无法直接创建 Singleton 类的实例。相反，必须调用 getInstance 方法来获取唯一的实例。如果实例尚未创建，则会创建一个新的实例，并将其保存在 instance 变量中。如果实例已经创建，则直接返回保存在 instance 中
 
 ## 单例模式的7中写法
+基础版本：懒汉模式，并没有考虑线程安全问题
+
 饥饿模式：类加载时就初始化，线程安全，但是会浪费内存
 
 双重检查锁：懒加载，线程安全，但是会有指令重排的问题
@@ -33,6 +35,19 @@ public class Singleton {
 ThreadLocal：懒加载，线程安全，但是只能在同一个线程中共享
 
 CAS：懒加载，线程安全，但是会有ABA问题
+
+## 懒汉
+```java
+public class Singleton{
+    private static Singleton instance;
+    private Singleton(){}
+    public static Singleton getInstance(){
+        if (instance == null) {
+            instance = new Singleton();
+        }
+        return instance;
+    }
+}
 
 ### 饥饿
 ```java
