@@ -63,7 +63,12 @@ public class Singleton {
 ```
 缺点：性能开销较大。每次调用getInstance()都需要进行同步，即使实例已经创建。所以有下面的双重检查锁写法
 
+为什么检查2次？
+外层 if (instance == null)
+这个检查是为了避免不必要的同步。如果实例已经被创建，那么这一检查可以避免进入同步块，从而提高性能。
 
+内层 if (instance == null)
+这个检查是在同步块内部进行的，并且是为了确保只有一个实例被创建。
 ### 双重检查锁
 ```java
 public class Singleton {
